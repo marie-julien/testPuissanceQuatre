@@ -95,7 +95,7 @@ public class Grille {
             for (int Colonne=0; Colonne<4; Colonne++){ // diagonale descendante => carre vert
                 if ((Cellules[j][Colonne].lireCouleurJeton()==JetonCourant.couleur)&&(Cellules[j+1][Colonne+1].lireCouleurJeton()==JetonCourant.couleur)&&(Cellules[j+2][Colonne+2].lireCouleurJeton()==JetonCourant.couleur)&&(Cellules[j+3][Colonne+3].lireCouleurJeton()==JetonCourant.couleur)){
                     return true;
-                } 
+                }
             }   
         } 
         for (int j=3; j<6; j++){
@@ -103,7 +103,7 @@ public class Grille {
                 if ((Cellules[j][Colonne].lireCouleurJeton()==JetonCourant.couleur)&&(Cellules[j-1][Colonne+1].lireCouleurJeton()==JetonCourant.couleur)&&(Cellules[j-2][Colonne+2].lireCouleurJeton()==JetonCourant.couleur)&&(Cellules[j-3][Colonne+3].lireCouleurJeton()==JetonCourant.couleur)){
                     return true;
                 }
-            }
+            }   
         } 
         return false;
     }    
