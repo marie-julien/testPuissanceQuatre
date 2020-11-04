@@ -22,13 +22,15 @@ public class Joueur {
     public void affecterCouleur(String CouleurPion){
         couleur=CouleurPion;
     }
-    public boolean ajouterJeton(){
+    public boolean ajouterJeton(Jeton MonJeton){
         while (nombreJetonsRestant<=21){
-           // for (int i = 1; )
-            return true;
+           for (int i = 0; i<21; i++ ) {
+               ListeJetons[i] = MonJeton;
+               return true;
+           }
         }  
         return false;
-    }        
+    }         
     public void obtenirDesintegrateur(){
         nombreDesintegrateurs=nombreDesintegrateurs +1;
     }
