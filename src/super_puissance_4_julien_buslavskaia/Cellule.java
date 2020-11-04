@@ -29,8 +29,13 @@ public class Cellule {
         }
     }
     public Jeton recupererJeton(){
-        return JetonCourant;
+        Jeton jetonRetour = JetonCourant;
+        JetonCourant = null;
+        return jetonRetour;
+
     }
+    
+    
     public boolean supprimerJeton(){
         if (JetonCourant!=null){
             JetonCourant=null;
@@ -75,8 +80,13 @@ public class Cellule {
         }
      }    
      public String lireCouleurJeton(){
+         
+         // si jetonCourant est nul : probleme : null pointer exeption
          return JetonCourant.lireCouleur();
      }
+     
+     
+     
      public boolean recupererDesintegrateur(){
          if(desintegrateur==true){
              desintegrateur=false;

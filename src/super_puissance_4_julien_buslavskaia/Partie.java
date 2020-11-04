@@ -47,8 +47,8 @@ public class Partie {
         //tant que coup de JoueurCourant n'est pas valide on lui redemande de jouer un coup 
         
         //dans boucle tant que le jeu n'est pas fini faire l'appel a la fonction etregagnantepourjoueur 
-        while () {
+        //while () {
             
-        }
+        //}
     }
 }
