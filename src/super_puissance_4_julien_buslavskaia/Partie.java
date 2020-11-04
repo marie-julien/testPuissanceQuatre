@@ -22,7 +22,7 @@ public class Partie {
         ListeJoueurs[1].couleur = "jaune";
     }
     
-    public void initialiserPartie() {
+    public void initialiserPartie() { // grille + trous + 
         Grille [][] GrilleJeu = new Grille[6][7];
         GrilleJeu[6][7].viderGrille(); 
         GrilleJeu[6][7].placerTrouNoir((int)(Math.random()*6), (int)(Math.random()*7));
@@ -39,5 +39,16 @@ public class Partie {
             Joueur2.ajouterJeton(MonJetonCourant2);
         }
         
+    }
+    
+    public void debuterPartie() {
+        //deux boucles (l'une dans l'autre) 
+        //tant que le jeu n'est pas fini 
+        //tant que coup de JoueurCourant n'est pas valide on lui redemande de jouer un coup 
+        
+        //dans boucle tant que le jeu n'est pas fini faire l'appel a la fonction etregagnantepourjoueur 
+        while () {
+            
+        }
     }
 }
