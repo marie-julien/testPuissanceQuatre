@@ -10,7 +10,18 @@ package super_puissance_4_julien_buslavskaia;
  * @author mjulien
  */
 public class Grille {
-    Cellule Cellules[][]=new Cellule[6][7]; 
+    Cellule [][] Cellules=new Cellule[6][7]; 
+    //[0][0] en bas a gauche 
+    
+    //initialisation de la grille 
+    //on cree 42 cellules vides 
+    Grille() {
+        for (int j=0; j<6; j++) {
+            for (int Colonne=0; Colonne<7; Colonne++) {
+                Cellules[j][Colonne] = new Cellule();
+            }
+        }
+    }
      
     public boolean ajouterJetonDansColonne(Jeton MonJeton,int Colonne){
         if(colonneRemplie(Colonne)==true){
@@ -31,6 +42,7 @@ public class Grille {
 }
     public boolean colonneRemplie(int Colonne){
         if (Cellules[5][Colonne].recupererJeton()==null){
+            //5 - en haut de colonne
             return false; //la colonne n'est pas remplie
         }
         else{
@@ -78,21 +90,21 @@ public class Grille {
     
     public boolean etreGagnantePourJoueur(Joueur JetonCourant){
         for (int Colonne=0; Colonne<7; Colonne++){
-            for (int j=0; j<3; j++){ // ligne => carre bleu 
+            for (int j=0; j<3; j++){ // ligne => carre rouge 
                 if ((Cellules[j][Colonne].lireCouleurJeton()==JetonCourant.couleur)&&(Cellules[j][Colonne+1].lireCouleurJeton()==JetonCourant.couleur)&&(Cellules[j][Colonne+2].lireCouleurJeton()==JetonCourant.couleur)&&(Cellules[j][Colonne+3].lireCouleurJeton()==JetonCourant.couleur)){
                     return true;
                 }
             }   
         }    
         for (int j=0; j<6; j++){
-            for (int Colonne=0; Colonne<4; Colonne++){ // colonne => carre rouge 
+            for (int Colonne=0; Colonne<4; Colonne++){ // colonne => carre vert 
                 if ((Cellules[j][Colonne].lireCouleurJeton()==JetonCourant.couleur)&&(Cellules[j+1][Colonne].lireCouleurJeton()==JetonCourant.couleur)&&(Cellules[j+2][Colonne].lireCouleurJeton()==JetonCourant.couleur)&&(Cellules[j+3][Colonne].lireCouleurJeton()==JetonCourant.couleur)){
                     return true;
                 }
             }   
         } 
         for (int j=0; j<3; j++){
-            for (int Colonne=0; Colonne<4; Colonne++){ // diagonale descendante => carre vert
+            for (int Colonne=0; Colonne<4; Colonne++){ // diagonale descendante => carre orange
                 if ((Cellules[j][Colonne].lireCouleurJeton()==JetonCourant.couleur)&&(Cellules[j+1][Colonne+1].lireCouleurJeton()==JetonCourant.couleur)&&(Cellules[j+2][Colonne+2].lireCouleurJeton()==JetonCourant.couleur)&&(Cellules[j+3][Colonne+3].lireCouleurJeton()==JetonCourant.couleur)){
                     return true;
                 }
@@ -100,7 +112,7 @@ public class Grille {
         } 
         for (int j=3; j<6; j++){
             for (int Colonne=0; Colonne<4; Colonne++){ // diagonale montante => carre noir
-                if ((Cellules[j][Colonne].lireCouleurJeton()==JetonCourant.couleur)&&(Cellules[j-1][Colonne+1].lireCouleurJeton()==JetonCourant.couleur)&&(Cellules[j-2][Colonne+2].lireCouleurJeton()==JetonCourant.couleur)&&(Cellules[j-3][Colonne+3].lireCouleurJeton()==JetonCourant.couleur)){
+                if ((Cellules[j][Colonne].lireCouleurJeton()==JetonCourant.couleur)&&(Cellules[j+1][Colonne+1].lireCouleurJeton()==JetonCourant.couleur)&&(Cellules[j+2][Colonne+2].lireCouleurJeton()==JetonCourant.couleur)&&(Cellules[j+3][Colonne+3].lireCouleurJeton()==JetonCourant.couleur)){
                     return true;
                 }
             }   
