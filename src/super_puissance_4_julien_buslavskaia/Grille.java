@@ -62,6 +62,9 @@ public class Grille {
         for (int Colonne = 0; Colonne < 7; Colonne++) {
             for (int j = 0; j < 6; j++) {
                 Cellules[j][Colonne].supprimerJeton();
+                 Cellules[j][Colonne].trouNoir =false;
+                 Cellules[j][Colonne].desintegrateur  =false;
+                 
             }
         }
     }
@@ -143,35 +146,37 @@ public class Grille {
 
     public void afficherGrilleSurConsole() {
         //pour chaque cellule afficher s'il y a un jeton sa couleur ou un T ou un D
-        for (int Colonne = 0; Colonne < 7; Colonne++) {
-            for (int j = 0; j < 6; j++) {
-                if (Cellules[j][Colonne].placerTrouNoir() == true) {
-                    System.out.println("T");
+         for (int j = 5; j >= 0; j--) {
+             for (int Colonne = 0; Colonne < 7; Colonne++) {
+           
+                if (Cellules[j][Colonne].presenceTrouNoir()== true) {
+                    System.out.print("T");
                 }
-                if (Cellules[j][Colonne].placerDesintegrateur() == true) {
-                    System.out.println("D");
+                else if (Cellules[j][Colonne].presenceDesintegrateur()== true) {
+                    System.out.print("D");
                 }
-                if (Cellules[j][Colonne].recupererJeton() == null) {
-                    System.out.println("N");
+                else if (Cellules[j][Colonne].JetonCourant == null) {
+                    System.out.print("N");
                 }
-                if (Cellules[j][Colonne].recupererJeton() != null) {
+                else if (Cellules[j][Colonne].JetonCourant != null) {
                     Jeton JetonCourant = Cellules[j][Colonne].recupererJeton();
                     if (JetonCourant.lireCouleur() == "rouge") {
-                        System.out.println("R");
+                        System.out.print("R");
                     } else {
-                        System.out.println("J");
+                        System.out.print("J");
                     }
                 }
             }
+             System.out.println();
         }
     }
 
     public void tasserGrille(int Colonne) {
-        for (int j = 5; j >= 0; j--) {//on met i-- car on part du bas de la grille: la ligne 5
-            if (Cellules[j][Colonne] == null) {
-                if (j != 0) {
-                    Cellules[j][Colonne] = Cellules[j - 1][Colonne];
-                }
+        for (int j = 5; j >= 1; j--) {//on met i-- car on part du bas de la grille: la ligne 5
+            if (Cellules[j][Colonne].JetonCourant  == null) {
+               Cellules[j][Colonne].JetonCourant = Cellules[j - 1][Colonne].JetonCourant;
+               Cellules[j - 1][Colonne].JetonCourant= null;
+               
             }
         }
     }

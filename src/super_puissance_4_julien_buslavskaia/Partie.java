@@ -14,6 +14,7 @@ import java.util.Scanner;
 public class Partie {
     Joueur [] ListeJoueurs = new Joueur[2];
     Jeton [] ListeJetons = new Jeton[21];
+    Grille grilleDeJeu = new Grille();
     Joueur joueurCourant;
     
     
@@ -45,7 +46,7 @@ public class Partie {
         //deux boucles (l'une dans l'autre) 
         //tant que le jeu n'est pas fini 
         //tant que coup de JoueurCourant n'est pas valide on lui redemande de jouer un coup 
-        
+        grilleDeJeu.afficherGrilleSurConsole();
         //dans boucle tant que le jeu n'est pas fini faire l'appel a la fonction etregagnantepourjoueur 
         //while () {
             

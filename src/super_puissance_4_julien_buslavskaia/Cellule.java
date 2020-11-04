@@ -81,7 +81,7 @@ public class Cellule {
      }    
      public String lireCouleurJeton(){
          
-         // si jetonCourant est nul : probleme : null pointer exeption
+         // BD : ATTENTION, A CORRIGER si jetonCourant est nul : probleme : null pointer exeption
          return JetonCourant.lireCouleur();
      }
      
