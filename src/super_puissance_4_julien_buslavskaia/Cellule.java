@@ -80,9 +80,13 @@ public class Cellule {
         }
      }    
      public String lireCouleurJeton(){
-         
-         // BD : ATTENTION, A CORRIGER si jetonCourant est nul : probleme : null pointer exeption
-         return JetonCourant.lireCouleur();
+         if (JetonCourant!=null) {
+             return JetonCourant.lireCouleur();
+         }
+         else {
+             return "error";
+         }
+         // BD : ATTENTION, A CORRIGER si JetonCourant est nul : probleme : null pointer exeption
      }
      
      

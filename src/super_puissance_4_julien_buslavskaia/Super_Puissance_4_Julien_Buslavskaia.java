@@ -15,9 +15,12 @@ public class Super_Puissance_4_Julien_Buslavskaia {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
         Partie p = new Partie();
-        p.debuterPartie();;
+        p.initialiserPartie();
+        p.attribuerCouleursAuxJoueurs();
+        p.debuterPartie();
+        
+
     }
     
 }

@@ -41,6 +41,6 @@ public class Joueur {
         }
         else{
             return false;
+        }
     }
-    }
-    }
+}
