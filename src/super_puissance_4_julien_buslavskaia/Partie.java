@@ -17,8 +17,6 @@ public class Partie {
     Grille grilleDeJeu = new Grille();
     Joueur joueurCourant;
     
-    
-    
     public void attribuerCouleursAuxJoueurs() {
         ListeJoueurs[0].couleur = "rouge";
         ListeJoueurs[1].couleur = "jaune";
@@ -42,35 +40,72 @@ public class Partie {
         Joueur Joueur2 = new Joueur(sc.nextLine());
         ListeJoueurs[0]=Joueur1;
         ListeJoueurs[1]=Joueur2;
-        for (int i=0; i<21; i++) {
-            Jeton JetonCourant = new Jeton(ListeJoueurs[].couleur);
-            Joueur1.ajouterJeton(JetonCourant);
-            //eton JetonCourant = new Jeton(ListeJoueurs[1].couleur);
-            Joueur2.ajouterJeton(JetonCourant);
-        }
-        
+        attribuerCouleursAuxJoueurs();
+        //ajout des jetons
+        for (int i=0; i<42; i++) {
+            if (i<21) {
+                joueurCourant = ListeJoueurs[0];
+                String couleur = joueurCourant.couleur;
+                ListeJetons[i] = new Jeton(couleur);
+                joueurCourant.ajouterJeton(ListeJetons[i]);
+            }
+            else {
+                joueurCourant = ListeJoueurs[1];
+                String couleur = joueurCourant.couleur;
+                ListeJetons[i] = new Jeton(couleur);
+                joueurCourant.ajouterJeton(ListeJetons[i]);
+            }
+        }   
     }
     
     public void debuterPartie() {
         //deux boucles (l'une dans l'autre) 
         //tant que le jeu n'est pas fini 
         //tant que coup de JoueurCourant n'est pas valide on lui redemande de jouer un coup 
-        grilleDeJeu.afficherGrilleSurConsole();
         //dans boucle tant que le jeu n'est pas fini faire l'appel a la fonction etregagnantepourjoueur 
+        grilleDeJeu.afficherGrilleSurConsole();
         while (grilleDeJeu.etreGagnantePourJoueur(joueurCourant)!=true && grilleDeJeu.etreRemplie()!=true) {
-            int i = 0;
-            System.out.println("Dans quelle colonne souhaitez-vous placer votre pion");
-            Scanner sc = new Scanner(System.in); //demande le numero de la colonne
-            //si dans cellule[libre][colonne] il y a TN => tasserGrille
-            if (grilleDeJeu.ajouterJetonDansColonne(ListeJetons[i], sc.nextInt())==true) {
-                grilleDeJeu.ajouterJetonDansColonne(ListeJetons[i], sc.nextInt());
-            }
-            else {
-                grilleDeJeu.tasserGrille(sc.nextInt());
-                grilleDeJeu.ajouterJetonDansColonne(ListeJetons[i], sc.nextInt());
-            }
-            grilleDeJeu.afficherGrilleSurConsole();
+            int i = 0; //i - coup
+            if (joueurCourant == ListeJoueurs[0]) {
+                System.out.println("Dans quelle colonne souhaitez-vous placer votre pion");
+                Scanner sc = new Scanner(System.in);    //demande le numero de la colonne
+                                                        //si dans cellule[libre][colonne] il y a TN => tasserGrille
+                if (sc.nextInt()<7) {                                        
+                    if (grilleDeJeu.ajouterJetonDansColonne(ListeJetons[i], sc.nextInt())==true) {
+                        grilleDeJeu.ajouterJetonDansColonne(ListeJetons[i], sc.nextInt());
+                    }
+                    else {
+                        grilleDeJeu.tasserGrille(sc.nextInt());
+                        grilleDeJeu.ajouterJetonDansColonne(ListeJetons[i], sc.nextInt());
+                    }
+                    grilleDeJeu.afficherGrilleSurConsole();
+                    joueurCourant = ListeJoueurs[1];
+                }  
+                else {
+                    System.out.println("Le numero de la colonne doit être inferieur à 7");
+                }
+            }    
+            else if (joueurCourant == ListeJoueurs[1]) {
+                System.out.println("Dans quelle colonne souhaitez-vous placer votre pion");
+                Scanner sc = new Scanner(System.in);    //demande le numero de la colonne
+                                                        //si dans cellule[libre][colonne] il y a TN => tasserGrille
+                if (sc.nextInt()<7) {                                        
+                    if (grilleDeJeu.ajouterJetonDansColonne(ListeJetons[i], sc.nextInt())==true) {
+                        grilleDeJeu.ajouterJetonDansColonne(ListeJetons[i], sc.nextInt());
+                    }
+                    else {
+                        grilleDeJeu.tasserGrille(sc.nextInt());
+                        grilleDeJeu.ajouterJetonDansColonne(ListeJetons[i], sc.nextInt());
+                    }
+                    grilleDeJeu.afficherGrilleSurConsole();
+                    joueurCourant = ListeJoueurs[0];
+                } 
+                else {
+                    System.out.println("Le numero de la colonne doit être inferieur à 7");
+                }
+            } 
             i++;
         }     
     }
 }
+//notre code n'est pas fonctionnel, mais on n'a pas reussi à aller plus loin : nous ne comprenions pas notre erreur

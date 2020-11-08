@@ -17,10 +17,7 @@ public class Super_Puissance_4_Julien_Buslavskaia {
     public static void main(String[] args) {
         Partie p = new Partie();
         p.initialiserPartie();
-        p.attribuerCouleursAuxJoueurs();
         p.debuterPartie();
-        
-
     }
     
 }
