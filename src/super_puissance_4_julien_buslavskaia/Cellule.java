@@ -104,6 +104,7 @@ public class Cellule {
         if((JetonCourant!=null) && (trouNoir==true)) {
             JetonCourant=null;
             trouNoir=false;
+            System.out.println("Votre jeton a frappé un trou noir");
             return true;
         }
         else {

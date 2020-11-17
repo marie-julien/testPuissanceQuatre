@@ -18,10 +18,14 @@ public class Joueur {
     
     public Joueur(String unNom){
         nom =unNom;
+        nombreDesintegrateurs = 0;
+        nombreJetonsRestant = 0;
     }
+    
     public void affecterCouleur(String CouleurPion){
         couleur=CouleurPion;
     }
+    
     public boolean ajouterJeton(Jeton MonJeton){
         while (nombreJetonsRestant<=21){
            for (int i = 0; i<21; i++ ) {
@@ -31,9 +35,16 @@ public class Joueur {
         }  
         return false;
     }         
+    
+    public Jeton retirerJeton(){
+        nombreJetonsRestant = nombreJetonsRestant-1;
+        return ListeJetons[nombreJetonsRestant];
+    }
+    
     public void obtenirDesintegrateur(){
         nombreDesintegrateurs=nombreDesintegrateurs +1;
     }
+    
     public boolean utiliserDesintegrateur(){
         if (nombreDesintegrateurs!=0){
             nombreDesintegrateurs=nombreDesintegrateurs-1;

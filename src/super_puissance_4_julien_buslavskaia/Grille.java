@@ -21,18 +21,46 @@ public class Grille {
         }
     }
 
-    public boolean ajouterJetonDansColonne(Jeton MonJeton, int Colonne) {
+    public boolean ajouterJetonDansColonne(Joueur joueurCourant, int Colonne) {
         if (colonneRemplie(Colonne) == true) {
             return false;//la colonne est deja remplie on ne peut pas ajouter de jetons
-        } else {
-            for (int j = 0; j < 6; j++) {
-                if (Cellules[j][Colonne].recupererJeton() == null) {
-                    Cellules[j][Colonne].affecterJeton(MonJeton);
-                    return true;//un jeton a ete ajoute a la colonne       
-                }
+        } 
+        //else {
+        //    for (int j = 0; j < 6; j++) {
+        //        if (Cellules[j][Colonne].recupererJeton() == null) {
+        //            Cellules[j][Colonne].affecterJeton(MonJeton);
+        //            return true;//un jeton a ete ajoute a la colonne       
+        //        }
+        //    }
+        //}
+        //return false;
+        int j = 0;
+        while (Cellules[j][Colonne].JetonCourant != null) {
+            j++;
+        }
+        Jeton unJeton = joueurCourant.retirerJeton();
+        Cellules[j][Colonne].JetonCourant = unJeton;
+        if (Cellules[j][Colonne].presenceDesintegrateur()) {
+            Cellules[j][Colonne].recupererDesintegrateur();
+            joueurCourant.nombreDesintegrateurs++;
+        }
+        if (Cellules[j][Colonne].presenceTrouNoir()) {
+            Cellules[j][Colonne].activerTrouNoir();
+        }
+        return true;
+    }   
+    
+    public void activerTrouNoir(int Colonne) {
+        int j = 5;
+        while (Cellules[j][Colonne].JetonCourant==null) {
+            j--;
+            if (j==0) {
+               break;   
             }
         }
-        return false;
+        if (j >= 0 && j < 6) {
+            Cellules[j][Colonne].activerTrouNoir();
+        }
     }
 
     public boolean colonneRemplie(int Colonne) {
